@@ -1,17 +1,27 @@
 <!doctype html>
 <html lang="en">
 <head>
-<link rel="icon" type="image/png" href="clinicanova-logo.png">
-
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>ClinicaNova - AI Clinic Assistant on WhatsApp</title>
+
+  <title>ClinicaNova AI – Your Smart Clinic Assistant on WhatsApp</title>
+
+  <meta name="description"
+        content="ClinicaNova AI helps clinics automate appointment scheduling and patient communication via WhatsApp, 24/7.">
+
+  <link rel="canonical" href="https://clinicanovaai.com/">
+
+  <link rel="icon" href="/favicon.ico">
+
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="styles.css">
-  <meta name="description" content="ClinicaNova - AI-powered automation for dental and medical clinics. Manage bookings, reminders and patient communication through WhatsApp." />
 </head>
+  
 <body>
+  <h1>ClinicaNova AI</h1>
+  <p>Your Smart Clinic Assistant On WhatsApp</p> 
   <header class="site-header" id="home">
     <div class="container header-inner">
       <div class="brand">
@@ -126,7 +136,9 @@ No receptionist required. No missed calls. No double bookings.
 
           <div class="benefit">
             <div class="icon" aria-hidden="true">
-              <svg viewBox="0 0 48 48" width="48" height="48"><rect x="8" y="10" width="32" height="28" rx="6" fill="#005F9E" opacity="0.08"/><image href="smartphone-svgrepo-com.png" x="13" y="13" width="22" height="22" preserveAspectRatio="xMidYMid meet"/>
+              <svg viewBox="0 0 48 48" width="48" height="48">
+                <rect x="8" y="10" width="32" height="28" rx="6" fill="#005F9E" opacity="0.08"/>
+                <image href="smartphone-svgrepo-com.png" x="13" y="13" width="22" height="22" preserveAspectRatio="xMidYMid meet"/>
 </svg>
             </div>
             <h4>Doctor Controls Everything by Phone</h4>
@@ -256,22 +268,40 @@ No receptionist required. No missed calls. No double bookings.
           <h2>Get Early Access</h2>
           <p>Request access or join the waitlist and we'll be in touch with next steps.</p>
 
-          <form class="lead-form" action="mailto:contact@clinicanovaai.com" method="post" enctype="text/plain">
-            <div class="form-row">
-              <input name="name" type="text" placeholder="Your name" required>
-              <input name="clinic" type="text" placeholder="Clinic name">
-            </div>
-            <div class="form-row">
-              <input name="email" type="email" placeholder="Email" required>
-              <input name="phone" type="tel" placeholder="Phone or WhatsApp">
-            </div>
-            <textarea name="message" placeholder="A short note (optional)"></textarea>
-            <div class="form-actions">
-              <button class="btn primary" type="submit">Request Access</button>
-              <a class="btn ghost" href="mailto:contact@clinicanovaai.com">Email Us</a>
-            </div>
-          </form>
-        </div>
+          <form class="lead-form" action="https://formspree.io/f/mlgrppng" method="POST">
+  <!-- Redirect on success (no JavaScript) -->
+  <input type="hidden" name="_next" value="https://clinicanovaai.com/thanks.html">
+
+  <!-- Honeypot spam trap (should be hidden with CSS) -->
+  <div class="hp-field" aria-hidden="true">
+    <input name="company" type="text" placeholder="Company" tabindex="-1" autocomplete="off">
+  </div>
+
+  <div class="form-row">
+    <input name="name" type="text" placeholder="Your name" required>
+    <input name="clinic" type="text" placeholder="Clinic name">
+  </div>
+
+  <div class="form-row">
+    <input name="email" type="email" placeholder="Email" required>
+    <input name="phone" type="tel" placeholder="Phone or WhatsApp" required>
+  </div>
+
+  <textarea name="message" placeholder="A short note (optional)" minlength="20"></textarea>
+
+  <!-- Consent (recommended for professionalism and fewer low-intent submissions) -->
+  <label class="form-consent">
+    <input name="consent" type="checkbox" required>
+    I agree to be contacted about this request.
+  </label>
+
+  <div class="form-actions">
+    <button class="btn primary" type="submit">Request Access</button>
+    <a class="btn ghost" href="mailto:contact@clinicanovaai.com">Email Us</a>
+  </div>
+</form>
+
+        </div><!-- CHANGE: Close .contact-form so .contact-info becomes the second grid column -->
 
         <aside class="contact-info">
           <div class="info-card">
