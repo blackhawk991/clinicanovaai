@@ -1,0 +1,532 @@
+
+
+/* styles.css */
+/* styles.css (dark-mode, exact-layout preserved) */
+:root{
+  --primary:#005F9E;
+  --teal:#00B7A5;
+
+  /* dark theme color tokens (mapped to original variable names to avoid structural changes) */
+  --light:#07121a;   /* used where light section backgrounds were */
+  --white:#0b1116;   /* used where cards and white areas were */
+  --muted:#9fb0c0;   /* used for secondary text and nav links */
+  --glass: rgba(255,255,255,0.02);
+  --radius:14px;
+  /* softer, deeper shadow suitable for dark backgrounds */
+  --shadow: 0 10px 30px rgba(0,0,0,0.7);
+  --ease: cubic-bezier(.2,.9,.3,1);
+
+  font-family: "Nunito Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color-scheme: dark;
+}
+
+/* keep layout / box model identical */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  /* dark gradient base while preserving original gradient usage */
+  background: linear-gradient(180deg,var(--white) 0%, #05121a 100%);
+  color: #e6eef6; /* primary readable text on dark background */
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.5;
+  font-size:16px;
+}
+
+.container{
+  width:92%;
+  max-width:1200px;
+  margin:0 auto;
+}
+
+/* Header - keep sticky behavior and spacing exactly the same */
+.site-header{
+  position:sticky;
+  top:0;
+  z-index:40;
+  backdrop-filter: blur(6px);
+  /* darker translucent header to match dark theme, same effect as original */
+  background: linear-gradient(180deg, rgba(11,16,22,0.88), rgba(11,16,22,0.80));
+  border-bottom:1px solid rgba(255,255,255,0.03);
+}
+.header-inner{
+  display:flex;
+  align-items:center;
+  gap:1rem;
+  height:74px;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.brand .logo{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  text-decoration:none;
+}
+/* keep logo color using your primary brand blue */
+.logo-text{
+  font-family:"Poppins",sans-serif;
+  font-weight:600;
+  color:var(--primary);
+  font-size:20px;
+  letter-spacing:0.2px;
+}
+.logo-mark svg{display:block}
+
+/* Inserted rule for PNG logo */
+.site-logo {
+  height: 36px;
+  width: auto;
+}
+
+.footer-logo {
+  max-height: 24px;
+  width: auto;
+}
+
+/* Nav - keep exact spacing and interaction but adapt colors for dark */
+.nav{
+  display:flex;
+  align-items:center;
+}
+.nav-list{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:flex;
+  gap:22px;
+}
+.nav-list a{
+  text-decoration:none;
+  color:var(--muted);
+  font-weight:600;
+  font-size:15px;
+  padding:8px 6px;
+  transition:all 200ms var(--ease);
+  border-radius:8px;
+}
+.nav-list a:hover{color:var(--primary); transform:translateY(-2px)}
+
+/* burger for small screens - keep same sizes */
+.nav-burger{
+  display:none;
+  width:44px;
+  height:44px;
+  border-radius:10px;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+}
+.nav-burger span{display:block;height:2px;width:22px;background:var(--muted);margin:4px 0;border-radius:2px;transition:all .25s var(--ease)}
+
+/* UPDATED: hide visually but keep focusable for accessibility */
+.nav-toggle{
+  position:absolute;
+  width:1px;
+  height:1px;
+  margin:-1px;
+  padding:0;
+  border:0;
+  overflow:hidden;
+  clip:rect(0 0 0 0);
+  clip-path:inset(50%);
+  white-space:nowrap;
+}
+
+/* Hero - same padding/grid but dark-friendly colors */
+.hero{
+  padding:56px 0;
+  background: linear-gradient(180deg, rgba(0,183,165,0.03), rgba(0,95,158,0.02));
+}
+.hero-inner{
+  display:grid;
+  grid-template-columns: 1fr 480px;
+  gap:36px;
+  align-items:center;
+  padding-top:12px;
+  padding-bottom:30px;
+}
+
+.hero-title{
+  font-family:"Poppins",sans-serif;
+  font-weight:700;
+  font-size:34px;
+  color:var(--primary);
+  margin:0 0 12px 0;
+  animation: slideIn 900ms var(--ease) both;
+}
+.hero-sub{
+  color:#cbd7e1; /* lighter secondary text for dark */
+  margin:0 0 18px 0;
+  max-width:58ch;
+  animation: fadeIn 1000ms 120ms var(--ease) both;
+}
+.hero-ctas{display:flex;gap:12px;align-items:center;margin-bottom:16px}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  text-decoration:none;
+  border-radius:12px;
+  padding:12px 16px;
+  font-weight:600;
+  font-family:"Nunito Sans",sans-serif;
+  transition:transform 180ms var(--ease), box-shadow 180ms var(--ease);
+  border:1px solid transparent;
+}
+.hero-inner.single-column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* or center if you want */
+  gap: 20px;
+}
+
+.btn:hover{transform:translateY(-4px)}
+.btn.primary{
+  /* keep original brand gradient but slightly adjusted for dark background */
+  background:linear-gradient(90deg,var(--primary),var(--teal));
+  color:#fff;
+  box-shadow: 0 10px 30px rgba(0,95,158,0.18);
+}
+.btn.ghost{
+  background:transparent;
+  border:1px solid rgba(255,255,255,0.04);
+  color:var(--primary);
+}
+
+/* trust list - unchanged structure, colors adapted */
+.trust-list{display:flex;gap:14px;margin-top:8px;list-style:none;padding:0;color:var(--muted);font-weight:600}
+.trust-list li{background:transparent;padding:6px 8px;border-radius:8px}
+
+/* hero visual - keep panel styles identical but dark-friendly */
+.hero-visual .visual-panel{
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+  background: linear-gradient(135deg, rgba(0,183,165,0.035), rgba(0,95,158,0.02));
+  animation: float 2000ms var(--ease) infinite alternate;
+}
+.hero-visual svg{width:100%;height:auto;display:block}
+
+/* About - same layout and spacing; swap light backgrounds for dark ones */
+.about{
+  padding:48px 0 24px 0;
+  background:var(--white); /* var(--white) now dark card color */
+}
+.about-inner{
+  display:grid;
+  grid-template-columns: 1fr 360px;
+  gap:28px;
+  align-items:start;
+}
+.about h2{font-family:"Poppins",sans-serif;color:var(--primary);margin:6px 0 14px;font-size:22px}
+.about-text{color:#c8d6e2;line-height:1.6}
+.about-compare{display:flex;flex-direction:column;gap:16px}
+.compare-card{
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius:12px;
+  padding:18px;
+  box-shadow:var(--shadow);
+  border:1px solid rgba(255,255,255,0.03);
+}
+.compare-card h3{margin:0 0 8px;font-family:"Poppins",sans-serif;color:var(--primary)}
+.compare-card ul{margin:0;padding-left:18px;color:var(--muted);font-weight:600}
+
+/* Benefits - preserve grid and card sizes exactly; color-adjust */
+.benefits{padding:36px 0}
+.benefits h2{font-family:"Poppins",sans-serif;color:var(--primary);margin-bottom:16px}
+.benefits-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+.benefit{
+  background:var(--white); /* card color */
+  border-radius:12px;
+  padding:18px;
+  box-shadow:var(--shadow);
+  text-align:left;
+  display:flex;
+  gap:12px;
+  align-items:center;
+  transition:transform 260ms var(--ease);
+}
+.benefit:hover{transform:translateY(-8px)}
+.benefit .icon{width:56px;height:56px;display:flex;align-items:center;justify-content:center;border-radius:10px;background:linear-gradient(180deg, rgba(0,183,165,0.03), rgba(0,95,158,0.02))}
+
+/* Inline WhatsApp icon next to benefit title (UPDATED to match Contact social icon styling) */
+.benefits .inline-whatsapp-wrap{
+  width:40px;
+  height:40px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:12px;
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border:1px solid rgba(255,255,255,0.03);
+  color:var(--primary);
+  margin-right:12px;
+  vertical-align:-0.125em;
+}
+.benefits .inline-whatsapp{
+  width:20px;
+  height:20px;
+  display:block;
+}
+
+/* How it works - same white->dark swap, keep borders/shadows */
+.how{padding:36px 0;background:var(--light)}
+.how h2{font-family:"Poppins",sans-serif;color:var(--primary);margin-bottom:18px}
+.process{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:grid;
+  gap:12px;
+}
+.process li{
+  display:flex;
+  gap:16px;
+  align-items:flex-start;
+  padding:16px;
+  border-radius:12px;
+  background:var(--white);
+  box-shadow:var(--shadow);
+  border:1px solid rgba(255,255,255,0.03);
+}
+.step-icon{
+  min-width:48px;
+  height:48px;
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(180deg,var(--primary),var(--teal));
+  color:#fff;
+  font-weight:700;
+  font-family:"Poppins",sans-serif;
+  font-size:16px;
+}
+.step-body h5{margin:0;font-family:"Poppins",sans-serif;color:var(--primary)}
+.step-body p{margin:6px 0 0;color:var(--muted)}
+
+/* Why love */
+.love{padding:36px 0}
+.love-list{list-style:disc;margin:12px 0 0 18px;color:var(--muted);font-weight:600}
+
+/* Pricing - preserve same grid/layout but dark backgrounds */
+.pricing{padding:36px 0;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00))}
+.pricing h2{font-family:"Poppins",sans-serif;color:var(--primary);margin-bottom:18px}
+.pricing-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+.price-card{
+  background:var(--white);padding:20px;border-radius:12px;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,0.03);
+  display:flex;flex-direction:column;gap:12px;align-items:flex-start;
+}
+.price{font-family:"Poppins",sans-serif;font-size:20px;color:var(--primary);margin:0}
+.price-card.featured{border:1px solid rgba(0,183,165,0.08);transform:translateY(-6px)}
+
+/* Contact - keep form layout and inputs sizes exactly the same but invert colors */
+.contact{padding:36px 0}
+.contact-inner{display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:start}
+.contact-form h2{font-family:"Poppins",sans-serif;color:var(--primary);margin-bottom:6px}
+.lead-form{display:flex;flex-direction:column;gap:12px}
+.form-row{display:flex;gap:12px}
+.lead-form input, .lead-form textarea{
+  width:100%;
+  padding:12px 14px;
+  border-radius:10px;
+  /* subtle dark input background and light border to keep structure visible */
+  border:1px solid rgba(255,255,255,0.04);
+  background:#0b1116;
+  font-size:15px;
+  color:#e6eef6;
+}
+.lead-form textarea{min-height:120px;resize:vertical}
+.form-actions{display:flex;gap:12px;align-items:center}
+
+/* Contact info aside - keep same layout and card styling */
+.contact-info{display:flex;flex-direction:column;gap:18px}
+.info-card{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));padding:18px;border-radius:12px;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,0.03)}
+.mini-cta{background:linear-gradient(90deg, rgba(0,183,165,0.02), rgba(0,95,158,0.01));padding:18px;border-radius:12px;box-shadow:var(--shadow)}
+
+/* Footer - same spacing, darker background */
+.site-footer{border-top:1px solid rgba(255,255,255,0.02);padding:18px 0;background:transparent}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.footer-nav a{margin-right:14px;text-decoration:none;color:var(--muted);font-weight:600}
+.footer-right{display:flex;gap:12px;align-items:center;color:var(--muted)}
+
+/* Animations - unchanged */
+@keyframes slideIn{
+  from{transform:translateY(14px);opacity:0}
+  to{transform:translateY(0);opacity:1}
+}
+@keyframes fadeIn{
+  from{opacity:0}
+  to{opacity:1}
+}
+@keyframes float{
+  from{transform:translateY(0)}
+  to{transform:translateY(-8px)}
+}
+
+/* Responsive - keep identical breakpoints and behavior */
+@media (max-width:980px){
+  .hero-inner{grid-template-columns:1fr 340px}
+  .about-inner{grid-template-columns:1fr}
+  .hero-title{font-size:30px}
+  .benefits-grid{grid-template-columns:repeat(2,1fr)}
+  .pricing-grid{grid-template-columns:repeat(2,1fr)}
+  .contact-inner{grid-template-columns:1fr}
+  .nav-list{gap:16px}
+}
+
+@media (max-width:720px){  /* Mobile: stack contact form inputs so placeholders don't truncate */
+  .form-row{
+    flex-direction:column;
+  } /* Mobile footer: clean 2x2 grid with correct reading order */
+.footer-links{
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-flow: row;   /* Home + Features on row 1, Pricing + Contact on row 2 */
+  row-gap: 6px;          /* closer vertically */
+  column-gap: 10px;      /* closer horizontally */
+  max-width: 240px;      /* keeps the two columns from spreading too wide */
+  margin: 0 auto;        /* centers the block */
+}
+
+/* Remove desktop margins + align text to the left edge */
+.footer-links a{
+  margin: 0;
+  display: block;
+  text-align: left;
+  justify-self: start;   /* ensures left-edge alignment in each column */
+}
+
+/* Move ONLY Contact slightly left (fine-tune value as needed) */
+  .container{width:94%}
+  .header-inner{height:64px;padding:6px 0}
+  .nav-list{display:flex;flex-direction:column;gap:12px;padding:16px 12px}
+  .nav-burger{display:flex}
+  .nav{position:fixed;right:14px;top:64px;background:linear-gradient(180deg, rgba(11,16,22,0.98), rgba(11,16,22,0.98));border-radius:12px;padding:8px;box-shadow:var(--shadow);transform-origin:top right;transition:transform 240ms var(--ease),opacity 200ms var(--ease)}
+  .nav-toggle:not(:checked) ~ .nav{transform:scale(.96);opacity:0;pointer-events:none}
+  .nav-toggle:checked ~ .nav{transform:scale(1);opacity:1;pointer-events:auto}
+  .nav-burger span{background:var(--muted)}
+  .hero-inner{grid-template-columns:1fr;gap:18px;padding:18px 0}
+  .hero-visual{order:2}
+  .hero-copy{order:1}
+  .benefits-grid{grid-template-columns:1fr}
+  .pricing-grid{grid-template-columns:1fr}
+  .about-compare{flex-direction:row;gap:12px}
+  .about-compare .compare-card{flex:1}
+  .process li{flex-direction:row;align-items:center}
+  .footer-inner{flex-direction:column;align-items:flex-start;gap:10px}
+}
+
+@media (max-width:420px){
+  .hero-title{font-size:24px}
+  .header-inner{padding:6px}
+  .logo-text{font-size:18px}
+  .nav{right:8px;top:60px}
+  .nav-burger{width:40px;height:40px}
+  .trust-list{display:none}
+  .step-body p{font-size:14px}
+}
+
+/* === Footer from version B (adapted to version A) === */
+.footer {
+  background: #0f0f0f;
+  padding: 50px 0;
+  margin-top: 60px;
+  text-align: center;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-links {
+  margin-bottom: 6px;
+}
+
+/* Footer links: keep original link styling at ALL sizes (prevents blue/underline on mobile) */
+.footer-links a{
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+.footer-links a:hover{
+  color: var(--primary);
+}
+
+/* Footer links spacing: DESKTOP/TABLET ONLY (so mobile grid alignment stays exact) */
+@media (min-width: 721px){
+  .footer-links{
+    margin-bottom: 6px;
+  }
+
+  .footer-links a{
+    margin: 0 15px; /* your original desktop spacing */
+  }
+}
+
+}
+
+.footer .email {
+  margin: 0;
+  font-size: 14px;
+  color: #cbd7e1;
+}
+
+.footer .email a {
+  color: inherit;
+}
+
+.footer .copy {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* Contact - social icons (scoped to contact section only) */
+.contact .social-links{
+  display:flex;
+  gap:12px;
+  margin-top:12px;
+}
+.contact .social-links a{
+  width:40px;
+  height:40px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:12px;
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border:1px solid rgba(255,255,255,0.03);
+  color:var(--primary);
+  text-decoration:none;
+  transition:transform 180ms var(--ease);
+}
+.contact .social-links a:hover{
+  color:var(--primary);
+  transform:translateY(-2px);
+}
+.contact .social-links a:focus-visible{
+  outline:2px solid var(--primary);
+  outline-offset:3px;
+}
+.contact .social-links svg{
+  display:block;
+}
